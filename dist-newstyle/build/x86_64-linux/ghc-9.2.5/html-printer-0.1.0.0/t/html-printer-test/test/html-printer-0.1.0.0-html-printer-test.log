@@ -1,0 +1,17 @@
+Test suite html-printer-test: RUNNING...
+
+MarkupParsing
+  Markup parsing tests
+    Markup parsing tests
+      empty [✔]
+      paragraph [✔]
+      heading 1 [✔]
+      code [✔]
+    Multi-line tests
+      example3 [✔]
+      example4 [✔]
+
+Finished in 0.0032 seconds
+6 examples, 0 failures
+Test suite html-printer-test: PASS
+Test suite logged to: /mnt/d/Code/html-printer/dist-newstyle/build/x86_64-linux/ghc-9.2.5/html-printer-0.1.0.0/t/html-printer-test/test/html-printer-0.1.0.0-html-printer-test.log

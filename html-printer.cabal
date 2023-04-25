@@ -1,0 +1,83 @@
+cabal-version:      2.4
+name:               html-printer
+version:            0.1.0.0
+license: BSD-3-Clause
+license-file:        LICENSE.txt
+category:            Learning, Web
+homepage:            https://github.com/soupi/learn-haskell-blog-generator
+bug-reports:         https://github.com/soupi/learn-haskell-blog-generator/issues
+author:             Brian Keaveney
+maintainer:         38507940+BrianKeaveney@users.noreply.github.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: README.md
+
+common common-settings
+  default-language: Haskell2010
+  ghc-options:
+    -Wall
+
+library
+    import: common-settings
+    exposed-modules: 
+        HtmlPrinter
+        HtmlPrinter.Convert
+        HtmlPrinter.Html
+            HtmlPrinter.Html.Internal
+        HtmlPrinter.Markup
+        HtmlPrinter.Env
+        HtmlPrinter.Directory
+
+    -- Modules included in this library but not exported.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    
+        base,
+        directory,
+        optparse-applicative,
+        filepath,
+        mtl
+    hs-source-dirs:   src
+
+executable html-printer
+    import: common-settings
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        base ^>=4.16.4.0,
+        html-printer,
+        optparse-applicative,
+        directory
+
+    hs-source-dirs:   app
+    ghc-options:
+        -O
+
+test-suite html-printer-test
+  import: common-settings
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Spec.hs
+
+  other-modules:
+   MarkupParsingSpec 
+  build-depends:
+      base
+    , hspec
+    , hspec-discover
+    , raw-strings-qq
+    , html-printer
+    , raw-strings-qq
+  ghc-options:
+    -O -threaded -rtsopts -with-rtsopts=-N
+  build-tool-depends:
+    hspec-discover:hspec-discover
